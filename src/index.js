@@ -4,9 +4,15 @@ import { __ } from '@wordpress/i18n'
 import block from './block.json'
 
 registerBlockType(block.name, {
-  edit() {
+  edit({ attributes, setAttributes }) {
+    const { content } = attributes
     return (
-      <RichText tagName='h2' placeholder={__('Enter Heading', 'udemy-plus')} />
+      <RichText
+        tagName='h2'
+        placeholder={__('Enter Heading', 'udemy-plus')}
+        value={content}
+        onChange={(newVal) => setAttributes({ content: newVal })}
+      />
     )
   },
 })
