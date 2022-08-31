@@ -1,6 +1,10 @@
 import { registerBlockType } from '@wordpress/blocks'
 import { useBlockProps, InspectorControls } from '@wordpress/block-editor'
-import { PanelBody, SelectControl } from '@wordpress/components'
+import {
+  PanelBody,
+  SelectControl,
+  CheckboxControl,
+} from '@wordpress/components'
 import { __ } from '@wordpress/i18n'
 import icons from '../../icons.js'
 import './main.css'
@@ -28,6 +32,16 @@ registerBlockType('udemy-plus/header-tools', {
               onChange={(newVal) =>
                 setAttributes({ showAuth: newVal === 'true' })
               }
+            />
+            <CheckboxControl
+              label={__('Show Login/Register Link', 'udemy-plus')}
+              help={
+                showAuth
+                  ? __('Showing Link', 'udemy-plus')
+                  : __('Hiding Link', 'udemy-plus')
+              }
+              checked={showAuth}
+              onChange={(showAuth) => setAttributes({ showAuth })}
             />
           </PanelBody>
         </InspectorControls>
