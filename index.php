@@ -8,7 +8,7 @@
  * Requires at least: 5.9
  * Requires PHP:      7.2
  * Author:            Bijay Thakur
- * Author URI:        https:bijaythakur.com/
+ * Author URI:        https://bijaythakur.com/
  * Text Domain:       udemy-plus
  * Domain Path:       /languages
  */
@@ -33,3 +33,4 @@ foreach ($allFiles as $filename) {
 
 // Hooks
 add_action('init', 'up_register_blocks');
+add_action('rest_api_init', 'up_rest_api_init');
