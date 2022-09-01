@@ -1,0 +1,1 @@
+{"version":3,"file":"blocks/auth-model/frontend.js","mappings":";;;;;AAAAA,OAAO,CAACC,GAAR,CAAY,qBAAZ,E","sources":["webpack://udemy-plus/./src/blocks/auth-model/frontend.js"],"sourcesContent":["console.log('Auth Modal Frontend')\r\n"],"names":["console","log"],"sourceRoot":""}
