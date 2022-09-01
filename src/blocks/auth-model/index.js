@@ -1,6 +1,6 @@
 import { registerBlockType } from '@wordpress/blocks'
 import { useBlockProps, InspectorControls } from '@wordpress/block-editor'
-import { PanelBody } from '@wordpress/components'
+import { PanelBody, ToggleControl } from '@wordpress/components'
 import { __ } from '@wordpress/i18n'
 import icons from '../../icons.js'
 import './main.css'
@@ -16,7 +16,18 @@ registerBlockType('udemy-plus/auth-modal', {
     return (
       <>
         <InspectorControls>
-          <PanelBody title={__('General', 'udemy-plus')}></PanelBody>
+          <PanelBody title={__('General', 'udemy-plus')}>
+            <ToggleControl
+              label={__('Show Register', 'udemy-plus')}
+              help={
+                showRegister
+                  ? __('Showing registration form', 'udemy-plus')
+                  : __('Hiding registration form', 'udemy-plus')
+              }
+              checked={showRegister}
+              onChange={(showRegister) => setAttributes({ showRegister })}
+            />
+          </PanelBody>
         </InspectorControls>
         <div {...blockProps}>
           {__(
