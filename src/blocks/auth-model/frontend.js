@@ -1,1 +1,3 @@
-console.log('Auth Modal Frontend')
+document.addEventListener('DOMContentLoaded', () => {
+  console.log('DOM Ready')
+})

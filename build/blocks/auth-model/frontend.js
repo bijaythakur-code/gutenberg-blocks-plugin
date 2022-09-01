@@ -3,7 +3,9 @@ var __webpack_exports__ = {};
 /*!*******************************************!*\
   !*** ./src/blocks/auth-model/frontend.js ***!
   \*******************************************/
-console.log('Auth Modal Frontend');
+document.addEventListener('DOMContentLoaded', () => {
+  console.log('DOM Ready');
+});
 /******/ })()
 ;
 //# sourceMappingURL=frontend.js.map
