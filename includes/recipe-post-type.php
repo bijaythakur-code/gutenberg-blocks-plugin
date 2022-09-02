@@ -43,7 +43,8 @@ function up_recipe_post_type()
     'menu_position'      => 20,
     'supports'           => array('title', 'editor', 'author', 'thumbnail', 'excerpt'),
     'show_in_rest'        => true,
-    'description'        => __('A custom post type for recipes', 'udemy-plus')
+    'description'        => __('A custom post type for recipes', 'udemy-plus'),
+    'taxonomies'         => ['category', 'post_tag']
   );
 
   register_post_type('recipe', $args);
