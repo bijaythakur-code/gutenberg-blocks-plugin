@@ -33303,7 +33303,7 @@ function RecipeRating(props) {
       }
 
       setPermission(false);
-      await _wordpress_api_fetch__WEBPACK_IMPORTED_MODULE_1___default()({
+      const response = await _wordpress_api_fetch__WEBPACK_IMPORTED_MODULE_1___default()({
         // example.com/wp-json/up/v1/rate
         path: 'up/v1/rate',
         method: 'POST',
@@ -33312,6 +33312,10 @@ function RecipeRating(props) {
           rating
         }
       });
+
+      if (response.status == 2) {
+        setAvgRating(response.rating);
+      }
     }
   });
 }

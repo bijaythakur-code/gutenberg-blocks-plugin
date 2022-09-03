@@ -18,7 +18,7 @@ function RecipeRating(props) {
 
         setPermission(false)
 
-        await apiFetch({
+        const response = await apiFetch({
           // example.com/wp-json/up/v1/rate
           path: 'up/v1/rate',
           method: 'POST',
@@ -27,6 +27,10 @@ function RecipeRating(props) {
             rating,
           },
         })
+
+        if (response.status == 2) {
+          setAvgRating(response.rating)
+        }
       }}
     />
   )
