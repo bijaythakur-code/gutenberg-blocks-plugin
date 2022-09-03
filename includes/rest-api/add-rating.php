@@ -28,6 +28,24 @@ function up_rest_api_add_rating_handler($request)
     return $response;
   }
 
+  $wpdb->insert(
+    "{$wpdb->prefix}recipe_ratings",
+    [
+      'post_id' => $postID,
+      'rating'  => $rating,
+      'user_id' => $userID
+    ],
+    ['%d', '%f', '%d']
+  );
+
+  $avgRating = round($wpdb->get_var($wpdb->prepare(
+    "SELECT AVG(`rating`) FROM {$wpdb->prefix}recipe_ratings WHERE post_id=%d",
+    $postID
+  )), 1);
+
+  update_post_meta($postID, 'recipe_rating', $avgRating);
+
   $response['status'] = 2;
+  $response['rating'] = $avgRating;
   return $response;
 }
