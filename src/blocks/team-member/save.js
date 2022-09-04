@@ -6,8 +6,11 @@ export default function ({ attributes }) {
     attributes
   const blockProps = useBlockProps.save()
 
+  const imageClass = `wp-image-${imgID} img-${imageShape}`
+
   return (
     <div {...blockProps}>
+      {imgURL && <img src={imgURL} alt={imgAlt} className={imageClass} />}
       <div class='author-meta'>
         <img />
         <p>
@@ -18,7 +21,15 @@ export default function ({ attributes }) {
       <div class='member-bio'>
         <RichText.Content tagName='p' value={bio} />
       </div>
-      <div class='social-links'></div>
+      <div class='social-links'>
+        {socialHandles.map((handle) => {
+          return (
+            <a href={handle.url}>
+              <i class={`bi bi-${handle.icon}`}></i>
+            </a>
+          )
+        })}
+      </div>
     </div>
   )
 }
