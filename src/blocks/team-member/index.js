@@ -51,6 +51,13 @@ registerBlockType('udemy-plus/team-member', {
               }}
               onError={(error) => console.error(error)}
               disableMediaButtons={imgURL}
+              onSelectURL={(url) => {
+                setAttributes({
+                  imgID: null,
+                  imgAlt: null,
+                  imgURL: url,
+                })
+              }}
             />
             <p>
               <RichText
