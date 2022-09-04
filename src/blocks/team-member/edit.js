@@ -58,6 +58,8 @@ export default function ({ attributes, setAttributes, context, isSelected }) {
 
   const imageClass = `wp-image-${imgID} img-${context['udemy-plus/image-shape']}`
 
+  const [activeSocialLink, setActiveSocialLink] = useState(null)
+
   return (
     <>
       {imgPreview && (
@@ -145,7 +147,17 @@ export default function ({ attributes, setAttributes, context, isSelected }) {
         <div className='social-links'>
           {socialHandles.map((handle, index) => {
             return (
-              <a href={handle.url} key={index}>
+              <a
+                href={handle.url}
+                key={index}
+                onClick={(event) => {
+                  event.preventDefault()
+                  setActiveSocialLink(activeSocialLink === index ? null : index)
+                }}
+                className={
+                  activeSocialLink === index && isSelected ? 'is-active' : ''
+                }
+              >
                 <i className={`bi bi-${handle.icon}`}></i>
               </a>
             )
@@ -165,6 +177,8 @@ export default function ({ attributes, setAttributes, context, isSelected }) {
                       },
                     ],
                   })
+
+                  setActiveSocialLink(socialHandles.length)
                 }}
               >
                 <Icon icon='plus' />
@@ -172,6 +186,9 @@ export default function ({ attributes, setAttributes, context, isSelected }) {
             </Tooltip>
           )}
         </div>
+        {isSelected && activeSocialLink !== null && (
+          <div className='team-member-social-edit-ctr'></div>
+        )}
       </div>
     </>
   )

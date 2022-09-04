@@ -75,6 +75,7 @@ __webpack_require__.r(__webpack_exports__);
   };
 
   const imageClass = `wp-image-${imgID} img-${context['udemy-plus/image-shape']}`;
+  const [activeSocialLink, setActiveSocialLink] = (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.useState)(null);
   return (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.Fragment, null, imgPreview && (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_1__.BlockControls, {
     group: "inline"
   }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_1__.MediaReplaceFlow, {
@@ -146,7 +147,12 @@ __webpack_require__.r(__webpack_exports__);
   }, socialHandles.map((handle, index) => {
     return (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("a", {
       href: handle.url,
-      key: index
+      key: index,
+      onClick: event => {
+        event.preventDefault();
+        setActiveSocialLink(activeSocialLink === index ? null : index);
+      },
+      className: activeSocialLink === index && isSelected ? 'is-active' : ''
     }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("i", {
       className: `bi bi-${handle.icon}`
     }));
@@ -162,10 +168,13 @@ __webpack_require__.r(__webpack_exports__);
           url: ''
         }]
       });
+      setActiveSocialLink(socialHandles.length);
     }
   }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_3__.Icon, {
     icon: "plus"
-  }))))));
+  })))), isSelected && activeSocialLink !== null && (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
+    className: "team-member-social-edit-ctr"
+  })));
 }
 
 /***/ }),
