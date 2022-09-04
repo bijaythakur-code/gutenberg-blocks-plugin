@@ -86,15 +86,17 @@ export default function ({ attributes, setAttributes }) {
 
       <InspectorControls>
         <PanelBody title={__('Settings', 'udemy-plus')}>
-          <TextareaControl
-            label={__('Alt Attribute', 'udemy-plus')}
-            value={imgAlt}
-            onChange={(imgAlt) => setAttributes({ imgAlt })}
-            help={__(
-              'Description of your image for screen readers.',
-              'udemy-plus'
-            )}
-          />
+          {imgPreview && !isBlobURL(imgPreview) && (
+            <TextareaControl
+              label={__('Alt Attribute', 'udemy-plus')}
+              value={imgAlt}
+              onChange={(imgAlt) => setAttributes({ imgAlt })}
+              help={__(
+                'Description of your image for screen readers.',
+                'udemy-plus'
+              )}
+            />
+          )}
         </PanelBody>
       </InspectorControls>
       <div {...blockProps}>
