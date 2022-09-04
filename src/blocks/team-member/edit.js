@@ -18,7 +18,7 @@ import {
 import { isBlobURL, revokeBlobURL } from '@wordpress/blob'
 import { useState } from '@wordpress/element'
 
-export default function ({ attributes, setAttributes, context }) {
+export default function ({ attributes, setAttributes, context, isSelected }) {
   const { name, title, bio, imgID, imgAlt, imgURL, socialHandles } = attributes
   const blockProps = useBlockProps()
 
@@ -150,25 +150,27 @@ export default function ({ attributes, setAttributes, context }) {
               </a>
             )
           })}
-          <Tooltip text={__('Add Social Media Handle', 'udemy-plus')}>
-            <a
-              href='#'
-              onClick={(event) => {
-                event.preventDefault()
-                setAttributes({
-                  socialHandles: [
-                    ...socialHandles,
-                    {
-                      icon: 'question',
-                      url: '',
-                    },
-                  ],
-                })
-              }}
-            >
-              <Icon icon='plus' />
-            </a>
-          </Tooltip>
+          {isSelected && (
+            <Tooltip text={__('Add Social Media Handle', 'udemy-plus')}>
+              <a
+                href='#'
+                onClick={(event) => {
+                  event.preventDefault()
+                  setAttributes({
+                    socialHandles: [
+                      ...socialHandles,
+                      {
+                        icon: 'question',
+                        url: '',
+                      },
+                    ],
+                  })
+                }}
+              >
+                <Icon icon='plus' />
+              </a>
+            </Tooltip>
+          )}
         </div>
       </div>
     </>
