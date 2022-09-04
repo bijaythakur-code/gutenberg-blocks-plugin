@@ -16,7 +16,7 @@ import {
 import { isBlobURL, revokeBlobURL } from '@wordpress/blob'
 import { useState } from '@wordpress/element'
 
-export default function ({ attributes, setAttributes }) {
+export default function ({ attributes, setAttributes, context }) {
   const { name, title, bio, imgID, imgAlt, imgURL, socialHandles } = attributes
   const blockProps = useBlockProps()
 
@@ -53,6 +53,8 @@ export default function ({ attributes, setAttributes }) {
 
     setImgPreview(url)
   }
+
+  const imageClass = `wp-image-${imgID} img-${context['udemy-plus/image-shape']}`
 
   return (
     <>
@@ -101,7 +103,9 @@ export default function ({ attributes, setAttributes }) {
       </InspectorControls>
       <div {...blockProps}>
         <div className='author-meta'>
-          {imgPreview && <img src={imgPreview} alt={imgAlt} />}
+          {imgPreview && (
+            <img src={imgPreview} alt={imgAlt} className={imageClass} />
+          )}
           {isBlobURL(imgPreview) && <Spinner />}
 
           <MediaPlaceholder
