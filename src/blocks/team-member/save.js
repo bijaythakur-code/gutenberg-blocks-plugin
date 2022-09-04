@@ -24,7 +24,7 @@ export default function ({ attributes }) {
       <div class='social-links'>
         {socialHandles.map((handle) => {
           return (
-            <a href={handle.url}>
+            <a href={handle.url} data-icon={handle.icon}>
               <i class={`bi bi-${handle.icon}`}></i>
             </a>
           )
