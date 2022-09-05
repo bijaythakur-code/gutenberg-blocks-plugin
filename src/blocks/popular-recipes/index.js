@@ -28,7 +28,6 @@ registerBlockType('udemy-plus/popular-recipes', {
     terms?.forEach((term) => {
       suggestions[term.name] = term
     })
-    console.log(suggestions)
 
     return (
       <>
@@ -40,7 +39,23 @@ registerBlockType('udemy-plus/popular-recipes', {
               maxItems={10}
               onNumberOfItemsChange={(count) => setAttributes({ count })}
               categorySuggestions={suggestions}
-              onCategoryChange={(newTerms) => console.log(newTerms)}
+              onCategoryChange={(newTerms) => {
+                const newCuisines = []
+
+                newTerms.forEach((cuisine) => {
+                  if (typeof cuisine === 'object') {
+                    return newCuisines.push(cuisine)
+                  }
+                  const cuisineTerm = terms?.find(
+                    (term) => term.name === cuisine
+                  )
+
+                  if (cuisineTerm) newCuisines.push(cuisineTerm)
+                })
+
+                setAttributes({ cuisines: newCuisines })
+              }}
+              selectedCategories={cuisines}
             />
           </PanelBody>
         </InspectorControls>
