@@ -29,6 +29,22 @@ registerBlockType('udemy-plus/popular-recipes', {
       suggestions[term.name] = term
     })
 
+    const cuisineIDs = cuisines.map((term) => term.id)
+    const posts = useSelect(
+      (select) => {
+        return select('core').getEntityRecords('postType', 'recipe', {
+          per_page: count,
+          _embed: true,
+          cuisine: cuisineIDs,
+          order: 'desc',
+          orderByRating: 1,
+        })
+      },
+      [count, cuisineIDs]
+    )
+
+    console.log(posts)
+
     return (
       <>
         <InspectorControls>
