@@ -85,7 +85,7 @@ function up_recipe_summary_render_cb($atts, $content, $block)
 
 <?php
 
-  $output = ob_get_clean();
+  $output = ob_get_contents();
   ob_end_clean();
 
   return $output;

@@ -91,7 +91,7 @@ function up_auth_modal_render_cb($atts)
   </div>
 <?php
 
-  $output = ob_get_clean();
+  $output = ob_get_contents();
   ob_end_clean();
 
   return $output;
