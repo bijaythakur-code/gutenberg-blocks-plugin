@@ -5,7 +5,7 @@ import {
   RichText,
 } from '@wordpress/block-editor'
 import { __ } from '@wordpress/i18n'
-import { PanelBody } from '@wordpress/components'
+import { PanelBody, QueryControls } from '@wordpress/components'
 import icons from '../../icons.js'
 import './main.css'
 
@@ -20,7 +20,14 @@ registerBlockType('udemy-plus/popular-recipes', {
     return (
       <>
         <InspectorControls>
-          <PanelBody title={__('Settings', 'udemy-plus')}></PanelBody>
+          <PanelBody title={__('Settings', 'udemy-plus')}>
+            <QueryControls
+              numberOfItems={count}
+              minItems={1}
+              maxItems={10}
+              onNumberOfItemsChange={(count) => setAttributes({ count })}
+            />
+          </PanelBody>
         </InspectorControls>
         <div {...blockProps}>
           <RichText
