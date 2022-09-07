@@ -84,6 +84,16 @@ module.exports = window["wp"]["plugins"];
 
 /***/ }),
 
+/***/ "@wordpress/rich-text":
+/*!**********************************!*\
+  !*** external ["wp","richText"] ***!
+  \**********************************/
+/***/ ((module) => {
+
+module.exports = window["wp"]["richText"];
+
+/***/ }),
+
 /***/ "./src/block-editor/neon-format.js":
 /*!*****************************************!*\
   !*** ./src/block-editor/neon-format.js ***!
@@ -91,8 +101,40 @@ module.exports = window["wp"]["plugins"];
 /***/ ((__unused_webpack___webpack_module__, __webpack_exports__, __webpack_require__) => {
 
 __webpack_require__.r(__webpack_exports__);
-/* harmony import */ var _neon_css__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./neon.css */ "./src/block-editor/neon.css");
+/* harmony import */ var _wordpress_element__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @wordpress/element */ "@wordpress/element");
+/* harmony import */ var _neon_css__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./neon.css */ "./src/block-editor/neon.css");
+/* harmony import */ var _wordpress_rich_text__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @wordpress/rich-text */ "@wordpress/rich-text");
+/* harmony import */ var _wordpress_block_editor__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @wordpress/block-editor */ "@wordpress/block-editor");
+/* harmony import */ var _wordpress_i18n__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! @wordpress/i18n */ "@wordpress/i18n");
 
+
+
+
+
+(0,_wordpress_rich_text__WEBPACK_IMPORTED_MODULE_2__.registerFormatType)('udemy-plus/neon', {
+  title: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_4__.__)('Neon', 'udemy-plus'),
+  tagName: 'span',
+  className: 'neon',
+
+  edit(_ref) {
+    let {
+      isActive,
+      onChange,
+      value
+    } = _ref;
+    return (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_3__.RichTextToolbarButton, {
+      title: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_4__.__)('Neon', 'udemy-plus'),
+      icon: "superhero",
+      isActive: isActive,
+      onClick: () => {
+        onChange((0,_wordpress_rich_text__WEBPACK_IMPORTED_MODULE_2__.toggleFormat)(value, {
+          type: 'udemy-plus/neon'
+        }));
+      }
+    });
+  }
+
+});
 
 /***/ }),
 
