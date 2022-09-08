@@ -7,7 +7,7 @@ import {
 import { __ } from '@wordpress/i18n'
 import { PanelBody, ColorPalette } from '@wordpress/components'
 import block from './block.json'
-import icons from '../../icons'
+import icons from '../../icons.js'
 import './main.css'
 
 registerBlockType(block.name, {
