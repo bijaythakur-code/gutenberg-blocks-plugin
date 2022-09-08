@@ -58,15 +58,15 @@ document.addEventListener('DOMContentLoaded', () => {
       }
     });
   });
-  signupForm.addEventListener('submit', async event => {
+  signupForm === null || signupForm === void 0 ? void 0 : signupForm.addEventListener('submit', async event => {
     event.preventDefault();
     const signupFieldset = signupForm.querySelector('fieldset');
     signupFieldset.setAttribute('disabled', true);
     const signupStatus = signupForm.querySelector('#signup-status');
     signupStatus.innerHTML = `
-    <div class="modal-status modal-status-info">
-      Please wait! We are creating your account.
-    </div>
+      <div class="modal-status modal-status-info">
+        Please wait! We are creating your account.
+      </div>
     `;
     const formData = {
       username: signupForm.querySelector('#su-name').value,
@@ -84,17 +84,17 @@ document.addEventListener('DOMContentLoaded', () => {
 
     if (responseJSON.status === 2) {
       signupStatus.innerHTML = `
-      <div class="modal-status modal-status-success">
-        Success! Your account has been created.
-      </div>
-     `;
+        <div class="modal-status modal-status-success">
+          Success! Your account has been created.
+        </div>
+      `;
       location.reload();
     } else {
       signupFieldset.removeAttribute('disabled');
       signupStatus.innerHTML = `
-       <div class="modal-status modal-status-danger">
-        Unable to create account! Please try again later.
-       </div>
+        <div class="modal-status modal-status-danger">
+          Unable to create account! Please try again later.
+        </div>
       `;
     }
   });
